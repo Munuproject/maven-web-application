@@ -1,0 +1,28 @@
+node('master')
+{
+def mavenhome = tool name:"maven 3.8.2"
+stage('checkoutcode')
+{
+git credentialsId: 'f00738ff-86e2-4687-819e-31179fc020b1', url: 'https://github.com/Munuproject/maven-web-application.git'
+}
+stage('build')
+{
+sh "${mavenhome}/bin/mvn clean package"
+}
+/*
+stage('executesonarreport')
+{
+sh "${mavenhome}/bin/mvn clean sonar:sonar"
+}
+stage('nexusartifactory')
+{
+sh "${mavenhome}/bin/mvn clean deploy"
+}
+stge('deploymentintomacat')
+{
+sshagent(['5ebe4760-1a0c-40a4-b1d1-8d1372eada6c']) {
+    sh "scp -o StrictHostKeyChecking=no /target/maven-web-application.war ec2-user@3.109.154.80:/opt/apache-tomcat-9.0.52/webapps"
+}
+}
+*/
+}
