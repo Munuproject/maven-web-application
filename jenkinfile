@@ -1,4 +1,4 @@
-node('master')
+node('nodes')
 {
 def mavenhome = tool name:"maven 3.8.2"
 stage('checkoutcode')
