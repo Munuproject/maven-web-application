@@ -33,7 +33,7 @@ options{
 	 }
    }
    
-    stage('ExecuteSonarQubeReport')
+  //  stage('ExecuteSonarQubeReport')
    {
      steps{
 	  sh "mvn sonar:sonar"
